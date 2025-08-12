@@ -201,6 +201,8 @@ const countries = [
     "Zimbabwe"
 ];
 
+const DEFAULT_DEBOUNCE_DURATION = 1000; // ms
+
 const CountrySearch = () => {
     const [query, setQuery] = useState('');
     const [selectedCountry, setSelectedCountry] = useState('');
@@ -208,19 +210,41 @@ const CountrySearch = () => {
     const [filteredCountries, setFilteredCountries] = useState([]);
     const [isOpen, setIsOpen] = useState(false);
     const [selectedIndex, setSelectedIndex] = useState(-1);
-    const [debounceDuration, setDebounceDuration] = useState(100);
-    const [debounceDurationInput, setDebounceDurationInput] = useState(100);
+    const [debounceDuration, setDebounceDuration] = useState(DEFAULT_DEBOUNCE_DURATION);
+    const [debounceDurationInput, setDebounceDurationInput] = useState(DEFAULT_DEBOUNCE_DURATION);
+
+    const [triggerDuration, setTriggerDuration] = useState(DEFAULT_DEBOUNCE_DURATION);
 
     const inputRef = useRef(null);
     const dropdownRef = useRef(null);
 
+    const demonstrationIntervalTimerRef = useRef(null);
+
     // Debounce the search query
     useEffect(() => {
+        if (selectedCountry !== '' && query === selectedCountry) {
+            return;
+        }
+
         const timer = setTimeout(() => {
             setDebouncedQuery(query);
         }, debounceDuration);
 
-        return () => clearTimeout(timer);
+        setTriggerDuration(debounceDuration);
+
+        if (query.trim() !== '') {
+            demonstrationIntervalTimerRef.current = setInterval(() => {
+                setTriggerDuration(prev => prev - 1000);
+            }, 1000);
+        }
+
+        return () => {
+            clearTimeout(timer);
+
+
+            clearInterval(demonstrationIntervalTimerRef.current);
+
+        }
     }, [query, debounceDuration]);
 
     // Filter countries based on debounced query
@@ -233,9 +257,11 @@ const CountrySearch = () => {
                 .filter(country => country.toLowerCase().includes(debouncedQuery.toLowerCase()));
 
             setFilteredCountries(filtered);
-            console.log('2');
             setIsOpen(filtered.length > 0);
             setSelectedIndex(-1);
+
+            clearInterval(demonstrationIntervalTimerRef.current);
+            setTriggerDuration(DEFAULT_DEBOUNCE_DURATION);
         }
     }, [debouncedQuery]);
 
@@ -312,21 +338,53 @@ const CountrySearch = () => {
 
     const handleDebounceSet = () => {
         setDebounceDuration(debounceDurationInput);
+        setTriggerDuration(debounceDurationInput);
     };
+
+    // computing the step for demonstration purpose
+    const step = getStep(query, debouncedQuery, filteredCountries, selectedCountry);
+
 
     return (
         <div className="country-search">
             <div className="country-search-container">
                 <div className="debounce-exp">
+
                     <p>Experiment by changing the debounce duration to see how long we wait until the suggestions are displayed</p>
-                    <label className='debounce-label' htmlFor="debounce-duration">Debounce duration (ms)</label>
+                    <label className="debounce-label" htmlFor="debounce-duration">Debounce duration (ms)</label>
                     <input className="duration-input" id="debounce-duration" type="number" min="100" max="10000" value={debounceDurationInput} onChange={handleDebounceChange} />
-                    <button className='set-duration' onClick={handleDebounceSet}>Set</button>
+                    <button className="set-duration" onClick={handleDebounceSet}>Set</button>
                 </div>
                 <div className="search-feature">
                     <div className="search-header">
                         <h2>Country: {selectedCountry}</h2>
                         <p>Search for a country with typeahead suggestions (with a debounce of <b>{debounceDuration} ms</b> )</p>
+
+                        <details>
+                            <summary>Click here to understand more about how "debouncing" works</summary>
+                            <div className="more-details">
+                                <p className="instruction">Set a huge value for debounce duration like 9000 ms to better understand this demonstration.</p>
+                                <p>Query: <b>{query}</b></p>
+                                <p>Debounced query: <b>{debouncedQuery}</b> </p>
+                                <p>(The above debounced query is the actual search string which is used for search filtering)</p>
+                                <div className="demonstration-step">
+                                    {<div className={step === 'step1' ? 'active' : 'inactive'}>
+                                        <p>Step 1</p>
+                                        <p>No input yet</p>
+                                    </div>}
+                                    <div className={step === 'step2' ? 'active' : 'inactive'}>
+                                        <p>Step 2</p>
+                                        <p>Waiting for debounce to settle. Search will be triggered in <b>{step === 'step2' ? triggerDuration : '0'}</b> ms.</p>
+                                        <p>Note that any input change during this will reset the debounce wait duration.</p>
+                                    </div>
+                                    <div className={step === 'step3' ? 'active' : 'inactive'}>
+                                        <p>Step 3</p>
+                                        <p>Debounce settled. Search triggered & complete (no API call involved). Results displayed.</p>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </details>
                     </div>
 
                     <div className="search-input-container" ref={dropdownRef}>
@@ -373,6 +431,18 @@ const CountrySearch = () => {
             </div>
         </div >
     );
+};
+
+const getStep = (query, debouncedQuery, filteredCountries, selectedCountry) => {
+    if (query.trim() === '') {
+        return 'step1';
+    }
+    if (query !== debouncedQuery && query !== selectedCountry) {
+        return 'step2';
+    }
+    if (filteredCountries.length > 0 || query === debouncedQuery) {
+        return 'step3';
+    }
 };
 
 export default CountrySearch;
