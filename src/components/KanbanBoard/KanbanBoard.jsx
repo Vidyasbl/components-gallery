@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import './KanbanBoard.css';
 
@@ -6,49 +6,49 @@ const initialData = {
     tasks: {
         'task-1': {
             id: 'task-1',
-            title: 'Implement user authentication',
-            description: 'Create login and signup functionality with JWT tokens',
-            assignee: 'John Smith',
+            title: 'Implement feedback collector',
+            description: 'Design a quick POC for the feedback collection functionality testing.',
+            assignee: 'Tim Berners-Lee',
             priority: 'High',
             type: 'Feature'
         },
         'task-2': {
             id: 'task-2',
-            title: 'Fix responsive layout bug',
-            description: 'Mobile navigation is not working properly on iOS devices',
-            assignee: 'Sarah Johnson',
+            title: 'Bump version for new API billing',
+            description: 'Update billing API version to fix issues with previous release.',
+            assignee: 'Brendan Eich',
             priority: 'High',
             type: 'Bug'
         },
         'task-3': {
             id: 'task-3',
-            title: 'Update API documentation',
-            description: 'Document new endpoints for user management',
-            assignee: 'Mike Chen',
+            title: 'Add NPS feedback to wallboard',
+            description: 'Document Net Promoter Score feedback to wallboard for future survey.',
+            assignee: 'Håkon Wium',
             priority: 'Medium',
             type: 'Documentation'
         },
         'task-4': {
             id: 'task-4',
-            title: 'Design landing page',
-            description: 'Create wireframes and mockups for the new landing page',
-            assignee: 'Emily Davis',
+            title: 'Update T&C copy with v1.9',
+            description: 'Terms and Conditions to reflect latest content',
+            assignee: 'Jordan Walke',
             priority: 'Medium',
-            type: 'Design'
+            type: 'Documentation'
         },
         'task-5': {
             id: 'task-5',
-            title: 'Set up CI/CD pipeline',
-            description: 'Configure automated testing and deployment',
-            assignee: 'Alex Wilson',
+            title: 'Bump feedback icon version',
+            description: 'Feedback icon changed by UX team. App to reflect the same',
+            assignee: 'Ryan Dahl',
             priority: 'Low',
-            type: 'DevOps'
+            type: 'Design'
         },
         'task-6': {
             id: 'task-6',
-            title: 'Code review guidelines',
-            description: 'Establish team code review standards and checklist',
-            assignee: 'Lisa Brown',
+            title: 'Quick booking for accomodations - web',
+            description: 'Establish team code review standards and checklist for web',
+            assignee: 'You',
             priority: 'Low',
             type: 'Process'
         }
@@ -148,7 +148,7 @@ const KanbanBoard = () => {
             case 'Medium':
                 return '#FF8B00';
             case 'Low':
-                return '#36B37E';
+                return '#F8EF2F';
             default:
                 return '#DDD';
         }
