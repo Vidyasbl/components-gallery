@@ -14,14 +14,6 @@ export const componentsData = [
     ],
   },
   {
-    id: "tic-tac-toe",
-    name: "Tic Tac Toe Game",
-    description:
-      "A fully interactive Tic Tac Toe game with game state management, win detection, and smooth animations. Features turn-based gameplay and automatic win/draw detection.",
-    tags: ["Tic Tac Toe", "Game", "Interactive"],
-    techTags: ["React Hooks", "useState", "useCallback", "Event Handling"],
-  },
-  {
     id: "kanban-board",
     name: "Kanban Board",
     description:
@@ -38,10 +30,10 @@ export const componentsData = [
   },
   {
     id: "country-search",
-    name: "Search (with typeahead functionality)",
+    name: "Search (with typeahead/autocomplete functionality)",
     description:
-      "Implementation of search suggestions from a local dataset as user types. Demonstrates rate limiting using debouncing",
-    tags: ["Typeahead", "Search"],
+      "Implementation of search suggestions from a local dataset as user types. Demonstrates rate limiting using debouncing.",
+    tags: ["Typeahead", "Autocomplete", "Autosuggest", "Search"],
     techTags: [
       "Debounce",
       "useState",
@@ -49,5 +41,13 @@ export const componentsData = [
       "Rate limit",
       "Mouse and Keyboard Events Handling",
     ],
+  },
+  {
+    id: "tic-tac-toe",
+    name: "Tic Tac Toe Game",
+    description:
+      "A fully interactive Tic Tac Toe game with game state management, win detection, and smooth animations. Features turn-based gameplay and automatic win/draw detection.",
+    tags: ["Tic Tac Toe", "Game", "Interactive"],
+    techTags: ["React Hooks", "useState", "useCallback", "Event Handling"],
   },
 ];
