@@ -1,6 +1,7 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { componentsData } from '../data/components';
+import CountrySearch from '../components/CountrySearch/CountrySearch';
 import TicTacToe from '../components/TicTacToe/TicTacToe';
 import InfiniteScroll from '../components/InfiniteScroll/InfiniteScroll';
 import KanbanBoard from '../components/KanbanBoard/KanbanBoard';
@@ -31,6 +32,8 @@ const ComponentShowcase = () => {
 
   const renderComponent = () => {
     switch (component.id) {
+      case 'country-search':
+        return <CountrySearch />;
       case 'tic-tac-toe':
         return <TicTacToe />;
       case 'infinite-scroll':
@@ -62,19 +65,19 @@ const ComponentShowcase = () => {
             <p>{component.description}</p>
 
             <div className="tags-section">
+              <div className="general-tags-container">
+                <div className="tags general-tags">
+                  {component.tags.map(tag => (
+                    <span key={tag} className="tag general-tag">{tag}</span>
+                  ))}
+                </div>
+              </div>
+
               <div className="tech-tags-container">
                 <h4 className="tags-title">Technologies Used</h4>
                 <div className="tags tech-tags">
                   {component.techTags.map(tag => (
                     <span key={tag} className="tag tech-tag">{tag}</span>
-                  ))}
-                </div>
-              </div>
-
-              <div className="general-tags-container">
-                <div className="tags general-tags">
-                  {component.tags.map(tag => (
-                    <span key={tag} className="tag general-tag">{tag}</span>
                   ))}
                 </div>
               </div>

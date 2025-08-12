@@ -1,13 +1,5 @@
 export const componentsData = [
   {
-    id: "tic-tac-toe",
-    name: "Tic Tac Toe Game",
-    description:
-      "A fully interactive Tic Tac Toe game with game state management, win detection, and smooth animations. Features turn-based gameplay and automatic win/draw detection.",
-    tags: ["Tic Tac Toe", "Game", "Interactive"],
-    techTags: ["React Hooks", "useState", "useCallback", "Event Handling"],
-  },
-  {
     id: "infinite-scroll",
     name: "Infinite Scroll",
     description:
@@ -22,6 +14,14 @@ export const componentsData = [
     ],
   },
   {
+    id: "tic-tac-toe",
+    name: "Tic Tac Toe Game",
+    description:
+      "A fully interactive Tic Tac Toe game with game state management, win detection, and smooth animations. Features turn-based gameplay and automatic win/draw detection.",
+    tags: ["Tic Tac Toe", "Game", "Interactive"],
+    techTags: ["React Hooks", "useState", "useCallback", "Event Handling"],
+  },
+  {
     id: "kanban-board",
     name: "Kanban Board",
     description:
@@ -34,6 +34,20 @@ export const componentsData = [
       "Droppable",
       "DragDropContext",
       "Animations",
+    ],
+  },
+  {
+    id: "country-search",
+    name: "Search (with typeahead functionality)",
+    description:
+      "Implementation of search suggestions from a local dataset as user types. Demonstrates rate limiting using debouncing",
+    tags: ["Typeahead", "Search"],
+    techTags: [
+      "Debounce",
+      "useState",
+      "useRef",
+      "Rate limit",
+      "Mouse and Keyboard Events Handling",
     ],
   },
 ];
