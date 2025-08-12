@@ -9,7 +9,7 @@ const InfiniteScroll = () => {
   const loadingRef = useRef(null);
 
   const colors = [
-    '#3b82f6', '#ef4444', '#10b981', '#f59e0b', '#8b5cf6', 
+    '#3b82f6', '#ef4444', '#10b981', '#f59e0b', '#8b5cf6',
     '#ec4899', '#06b6d4', '#84cc16', '#f97316', '#6366f1'
   ];
 
@@ -26,18 +26,18 @@ const InfiniteScroll = () => {
     if (loading || !hasMore) return;
 
     setLoading(true);
-    
+
     // Simulate API delay
     await new Promise(resolve => setTimeout(resolve, 1000));
-    
+
     const newItems = generateItems(items.length, 10);
     setItems(prevItems => [...prevItems, ...newItems]);
-    
+
     // Stop loading after 100 items for demo purposes
     if (items.length >= 90) {
       setHasMore(false);
     }
-    
+
     setLoading(false);
   }, [items.length, loading, hasMore]);
 
@@ -49,7 +49,7 @@ const InfiniteScroll = () => {
 
   useEffect(() => {
     const currentLoadingRef = loadingRef.current;
-    
+
     if (!currentLoadingRef) return;
 
     observerRef.current = new IntersectionObserver(
@@ -83,8 +83,8 @@ const InfiniteScroll = () => {
 
       <div className="items-container">
         {items.map((item) => (
-          <div 
-            key={item.id} 
+          <div
+            key={item.id}
             className="item-card"
             style={{ '--item-color': item.color }}
           >
@@ -97,9 +97,6 @@ const InfiniteScroll = () => {
             <p>{item.description}</p>
             <div className="item-footer">
               <span className="item-id">ID: {item.id + 1}</span>
-              <span className="item-timestamp">
-                {new Date().toLocaleDateString()}
-              </span>
             </div>
           </div>
         ))}
@@ -112,7 +109,7 @@ const InfiniteScroll = () => {
             <span>Loading more items...</span>
           </div>
         )}
-        
+
         {!hasMore && (
           <div className="end-message">
             🎉 You've reached the end! No more items to load.
