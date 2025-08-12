@@ -5,6 +5,7 @@ import CountrySearch from '../components/CountrySearch/CountrySearch';
 import TicTacToe from '../components/TicTacToe/TicTacToe';
 import InfiniteScroll from '../components/InfiniteScroll/InfiniteScroll';
 import KanbanBoard from '../components/KanbanBoard/KanbanBoard';
+import Stopwatch from '../components/Stopwatch/Stopwatch';
 
 const ComponentShowcase = () => {
   const { id } = useParams();
@@ -40,6 +41,8 @@ const ComponentShowcase = () => {
         return <InfiniteScroll />;
       case 'kanban-board':
         return <KanbanBoard />;
+      case 'stop-watch':
+        return <Stopwatch />;
       default:
         return <div>Component not implemented yet</div>;
     }
@@ -74,7 +77,7 @@ const ComponentShowcase = () => {
               </div>
 
               <div className="tech-tags-container">
-                <h4 className="tags-title">Technologies Used</h4>
+                <h4 className="tags-title">Technologies / Concepts used</h4>
                 <div className="tags tech-tags">
                   {component.techTags.map(tag => (
                     <span key={tag} className="tag tech-tag">{tag}</span>

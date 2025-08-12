@@ -5,13 +5,7 @@ export const componentsData = [
     description:
       "Infinite scrolling implementation using Intersection Observer API. Demonstrates efficient loading of content as users scroll, with loading indicators and smooth performance.",
     tags: ["Infinite Scroll", "Performance", "Loading"],
-    techTags: [
-      "Intersection Observer",
-      "useRef",
-      "useEffect",
-      "useCallback",
-      "Event Handling",
-    ],
+    techTags: ["Intersection Observer", "useRef", "useEffect", "useCallback"],
   },
   {
     id: "kanban-board",
@@ -36,10 +30,22 @@ export const componentsData = [
     tags: ["Typeahead", "Autocomplete", "Autosuggest", "Search"],
     techTags: [
       "Debounce",
-      "useState",
       "useRef",
+      "useEffect",
       "Rate limit",
       "Mouse and Keyboard Events Handling",
+    ],
+  },
+  {
+    id: "stop-watch",
+    name: "Stopwatch",
+    description: "A cool digital stopwatch",
+    tags: ["StopWatch", "Digital watch", "Stop clock"],
+    techTags: [
+      "requestAnimationFrame",
+      "useRef",
+      "useEffect",
+      "Custom react hooks",
     ],
   },
   {
@@ -48,6 +54,6 @@ export const componentsData = [
     description:
       "A fully interactive Tic Tac Toe game with game state management, win detection, and smooth animations. Features turn-based gameplay and automatic win/draw detection.",
     tags: ["Tic Tac Toe", "Game", "Interactive"],
-    techTags: ["React Hooks", "useState", "useCallback", "Event Handling"],
+    techTags: ["Custom react hooks", "useCallback"],
   },
 ];

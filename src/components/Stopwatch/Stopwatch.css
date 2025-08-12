@@ -1,0 +1,173 @@
+.stopwatch-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    background-color: #0d0d0d;
+    /* Black dial */
+    padding: 40px;
+    border-radius: 50%;
+    /* Circular shape */
+    border: 4px solid #444;
+    /* Subtle border */
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.8), 0 0 40px rgba(0, 0, 0, 0.5);
+    /* Inner and outer shadow */
+    width: 300px;
+    height: 300px;
+    justify-content: center;
+    justify-self: center;
+    position: relative;
+}
+
+@media (max-width: 600px) {
+    .stopwatch-container {
+        width: 250px;
+        height: 250px;
+        padding: 30px;
+    }
+
+    .app-title {
+        font-size: 2em;
+    }
+}
+
+/* Stopwatch Display Styling (Neon Internals) */
+.stopwatch-display {
+    font-family: 'Digital-7', monospace;
+    /* A classic digital font feel */
+    font-size: 1.5em;
+    /* Large digits */
+    color: #00ffcc;
+    /* Neon green */
+    text-shadow: 0 0 15px #00ffcc, 0 0 25px #00ffcc;
+    /* Neon glow effect */
+    background-color: #1a1a1a;
+    padding: 5px 15px;
+    border-radius: 10px;
+    border: 2px solid #00aacc;
+    letter-spacing: 2px;
+    display: flex;
+    align-items: baseline;
+    box-shadow: inset 0 0 10px rgba(0, 255, 204, 0.3);
+    overflow: hidden;
+    /* Ensures text doesn't bleed */
+}
+
+@media (max-width: 600px) {
+    .stopwatch-display {
+        font-size: 1em;
+    }
+}
+
+.time-segment {
+    min-width: 50px;
+    /* Ensure consistent width for minutes/seconds */
+    text-align: right;
+}
+
+.time-segment.milliseconds {
+    font-size: 0.7em;
+    /* Smaller for milliseconds */
+    min-width: 40px;
+    text-align: left;
+    transform: translateY(-2px);
+    /* Slightly adjust vertical alignment */
+}
+
+.time-separator {
+    color: #ff00ff;
+    /* Neon pink for separators */
+    font-size: 0.8em;
+    margin: 0 5px;
+    text-shadow: 0 0 8px #ff00ff, 0 0 15px #ff00ff;
+}
+
+/* Stopwatch Controls Styling */
+.stopwatch-controls {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.control-button {
+    background-color: #333;
+    /* Dark button background */
+    color: #fff;
+    /* White text */
+    border: 2px solid;
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.control-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+}
+
+.control-button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 600px) {
+    .control-button {
+        padding: 5px 10px;
+    }
+}
+
+.start-button {
+    border-color: #00ffcc;
+    /* Neon green border */
+    color: #00ffcc;
+    /* Neon green text */
+}
+
+.start-button:hover {
+    background-color: #00ffcc;
+    color: #0d0d0d;
+    text-shadow: none;
+}
+
+.pause-button {
+    border-color: #ffcc00;
+    /* Neon yellow/orange border */
+    color: #ffcc00;
+    /* Neon yellow/orange text */
+}
+
+.pause-button:hover {
+    background-color: #ffcc00;
+    color: #0d0d0d;
+    text-shadow: none;
+}
+
+.reset-button {
+    border-color: #00aaff;
+    /* Neon blue border */
+    color: #00aaff;
+    /* Neon blue text */
+}
+
+.reset-button:hover {
+    background-color: #00aaff;
+    color: #0d0d0d;
+    text-shadow: none;
+}
+
+/* Footer Note */
+.footer-note {
+    margin-top: 30px;
+    font-size: 0.9em;
+    color: #666;
+    text-align: center;
+}
+
+.footer-note p {
+    margin: 0;
+}

@@ -35,7 +35,7 @@ const Home = () => {
           <input
             type="text"
             className="search-bar"
-            placeholder="Search components by name or tags..."
+            placeholder="Search components by name or tags (general or technological concepts)"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
@@ -61,7 +61,7 @@ const Home = () => {
                 </div>
 
                 <div className="tech-tags-container">
-                  <h4 className="tags-title">Technologies</h4>
+                  <h4 className="tags-title">Technologies / Concepts</h4>
                   <div className="tags tech-tags">
                     {component.techTags.map(tag => (
                       <span key={tag} className="tag tech-tag">{tag}</span>
