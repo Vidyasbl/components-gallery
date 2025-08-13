@@ -1,0 +1,71 @@
+/* src/RichTextEditor.css */
+
+.editor-container {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    max-width: 700px;
+    margin: 20px auto;
+    font-family: Arial, sans-serif;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+
+.menu-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    background-color: #f5f5f5;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.menu-bar button {
+    background-color: #eee;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 6px 12px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.menu-bar button:hover {
+    background-color: #ddd;
+}
+
+.menu-bar button.is-active {
+    background-color: #337ab7;
+    color: #fff;
+    border-color: #337ab7;
+}
+
+.editor-content {
+    padding: 20px;
+    min-height: 200px;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+/* Tiptap-specific classes for editable content */
+.editor-content .ProseMirror {
+    outline: none;
+    word-wrap: break-word;
+}
+
+.editor-content h1 {
+    font-size: 2.5em;
+    margin: 0.67em 0;
+}
+
+.editor-content h2 {
+    font-size: 2em;
+    margin: 0.83em 0;
+}
+
+.editor-content ul,
+.editor-content ol {
+    margin: 1em 0;
+    padding-left: 40px;
+}

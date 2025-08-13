@@ -6,6 +6,10 @@ import TicTacToe from '../components/TicTacToe/TicTacToe';
 import InfiniteScroll from '../components/InfiniteScroll/InfiniteScroll';
 import KanbanBoard from '../components/KanbanBoard/KanbanBoard';
 import Stopwatch from '../components/Stopwatch/Stopwatch';
+import RichTextEditor from '../components/RichTextEditor/RichTextEditor';
+import RichTextEditorTipTap from '../components/RichTextEditorTipTap/RichTextEditorTipTap';
+import Whiteboard from '../components/Whiteboard/Whiteboard';
+import Carousel from '../components/Carousel/Carousel';
 
 const ComponentShowcase = () => {
   const { id } = useParams();
@@ -43,6 +47,14 @@ const ComponentShowcase = () => {
         return <KanbanBoard />;
       case 'stop-watch':
         return <Stopwatch />;
+      case 'rich-text-editor-vanilla':
+        return <RichTextEditor />;
+      case 'rich-text-editor-tiptap':
+        return <RichTextEditorTipTap />;
+      case 'whiteboard':
+        return <Whiteboard />;
+      case 'carousel':
+        return <Carousel />;
       default:
         return <div>Component not implemented yet</div>;
     }
